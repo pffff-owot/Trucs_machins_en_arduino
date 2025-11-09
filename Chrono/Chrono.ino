@@ -1,19 +1,26 @@
 #include <LiquidCrystal.h>
 LiquidCrystal lcd(7, 8, 9, 10, 11, 12);
 
-int heures = 00;
-int minutes = 00;
-int secondes = 00;
-const int BTN_PIN = 2;
+int heures = 0;
+int minutes = 0;
+int secondes = -1;
 void setup(){
   turn_on_lcd();
-  if(digitalRead(BTN_PIN)==0){
-    lcd.print(minutes);
-    while(true){}
-  }
+  lcd.cursor();
 }
 
 void loop(){
-  lcd.print("cac");
-  delay(100);
+  if(secondes==60){
+    secondes=0;
+    minutes++;
+    lcd.clear();
+  }
+  if(minutes==60){
+    minutes=0;
+    heures++;
+    lcd.clear();
+  }
+  lcd.clear();
+  lcd.print(String(heures)+':'+String(minutes)+':'+String(secondes++));
+  delay(1000);
 }
