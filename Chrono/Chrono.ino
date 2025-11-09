@@ -13,12 +13,10 @@ void loop(){
   if(secondes==60){
     secondes=0;
     minutes++;
-    lcd.clear();
   }
   if(minutes==60){
     minutes=0;
     heures++;
-    lcd.clear();
   }
   lcd.clear();
   lcd.print(String(heures)+':'+String(minutes)+':'+String(secondes++));
