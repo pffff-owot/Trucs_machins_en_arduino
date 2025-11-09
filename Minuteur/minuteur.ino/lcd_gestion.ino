@@ -18,3 +18,28 @@ void off(){
   pinMode(6,OUTPUT);
   analogWrite(6,0);
 }
+
+void change_lum(){
+  int lum = 6;
+  pinMode(lum, OUTPUT);
+  //log("25 lcd");
+  if(up==true){
+    for(int count = 55; count < 155; count = count + 1){
+      //log("28 lcd");
+      analogWrite(lum, count);
+      Serial.println("lum level:"+String(count));
+      delay(10);
+    }
+    up=false;
+  }
+  else if(up==false){
+    //log("36 lcd");
+    for (int count = 155; count > 55; count = count - 1){
+      //log("38 lcd");
+      analogWrite(lum, count);
+      Serial.println("lum level:"+String(count));
+      delay(10);
+    }
+    up=true;
+  }
+}
