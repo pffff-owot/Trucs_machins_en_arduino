@@ -37,7 +37,7 @@ void change_lum(){
     for (int count = 155; count > 55; count = count - 1){
       //log("38 lcd");
       analogWrite(lum, count);
-      Serial.println("lum level:"+String(count));
+      Serial.println("lum_level:"+String(count));
       delay(10);
     }
     up=true;

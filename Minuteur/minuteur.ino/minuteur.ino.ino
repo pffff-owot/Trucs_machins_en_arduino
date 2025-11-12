@@ -1,9 +1,9 @@
 #include <LiquidCrystal.h>
 LiquidCrystal lcd(7, 8, 9, 10, 11, 12);
 
-int heures = 1;
-int minutes = 0;
-int secondes = 0;
+int heures = 0;
+int minutes = 1;
+int secondes = 2;
 bool up = false;
 void setup() {
   turn_on_lcd();
