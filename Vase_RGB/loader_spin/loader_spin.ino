@@ -5,11 +5,12 @@ rgb_color colors[LED_COUNT];
   long a;
   long b;
   long c;
-  int speed = 161;
+  int speed;
 
 //Allume toutes les leds de la couleur rgb_color(r,g,b) spécifiée
 void on(int r, int g, int b, int led=-1){
   //off();
+  Serial.print("delay :");
   Serial.println(speed);
   if(led== -1){
     for(int i = 0 ; i < LED_COUNT ; i++){
@@ -41,28 +42,28 @@ void setup(){
 }
 
 void loop(){
+  speed=81;
   a = random(256);
   b = random(256);
   c = random(256);
-  for(int i = 0 ; i < 9 ; i++){
+  for(int i = 0 ; i < 8 ; i++){
     on(a,b,c,i);
     speed=speed-10;
     delay(speed);
   }  
-  for(int i = 9 ; i < 16 ; i++){
+  for(int i = 8 ; i < 16 ; i++){
     on(a,b,c,i);
     speed=speed+10;
     delay(speed);
   }
-  for(int i = 0 ; i < 9 ; i++){
+  for(int i = 0 ; i < 8 ; i++){
     on(0,0,0,i);
     speed=speed-10;
     delay(speed);
   }  
-  for(int i = 9 ; i < 16 ; i++){
+  for(int i = 8 ; i < 16 ; i++){
     on(0,0,0,i);
     speed=speed+10;
     delay(speed);
   }
-  //speed=161;
 }
