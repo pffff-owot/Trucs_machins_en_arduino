@@ -13,7 +13,8 @@ void on(int r, int g, int b, int led=-1){
   Serial.print(" blue:");Serial.print(b);
   Serial.print(" red:");Serial.print(r);
   Serial.print(" green:");Serial.print(g);
-  Serial.print(" delay:");Serial.println(speed);
+  Serial.print(" delay:");Serial.print(speed);
+  Serial.print(" LED_Operating:");Serial.println(led);
   if(led== -1){
     for(int i = 0 ; i < LED_COUNT ; i++){
       colors[i] = rgb_color(r,g,b);
@@ -44,7 +45,7 @@ void setup(){
 }
 
 void loop(){
-  speed=80;
+  speed=90;
   a = random(256);
   b = random(256);
   c = random(256);
