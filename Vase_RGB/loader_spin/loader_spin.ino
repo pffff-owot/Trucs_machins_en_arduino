@@ -11,11 +11,13 @@ bool debug = false;
 //Allume toutes les leds de la couleur rgb_color(r,g,b) spécifiée
 void on(int r, int g, int b, int led=-1){
   //off();
-    Serial.print(" blue:");Serial.print(b);
-    Serial.print(" red:");Serial.print(r);
-    Serial.print(" green:");Serial.print(g);
-    Serial.print(" delay:");Serial.print(speed);
-    Serial.print(" LED_Operating:");Serial.println(led);
+    if(debug){
+      Serial.print(" blue:");Serial.print(b);
+      Serial.print(" red:");Serial.print(r);
+      Serial.print(" green:");Serial.print(g);
+      Serial.print(" delay:");Serial.print(speed);
+      Serial.print(" LED_Operating:");Serial.println(led);
+    }
   if(led== -1){
     for(int i = 0 ; i < LED_COUNT ; i++){
       colors[i] = rgb_color(r,g,b);
@@ -54,6 +56,7 @@ void loop(){
   if (Serial.available() > 0) {
     debug = !debug;
     Serial.println("Debugging infos turned on/off.");
+    Serial.readString();
     delay(500);
   }
   for(int i = 0 ; i < 8 ; i++){
