@@ -5,6 +5,7 @@ rgb_color colors[LED_COUNT];
   long a;
   long b;
   long c;
+  int speed = 100;
 
 //Allume toutes les leds de la couleur rgb_color(r,g,b) spécifiée
 void on(int r, int g, int b, int led=-1){
@@ -43,12 +44,26 @@ void loop(){
   a = random(256);
   b = random(256);
   c = random(256);
-  for(int i = 0 ; i < LED_COUNT ; i++){
+  for(int i = 0 ; i < 9 ; i++){
     on(a,b,c,i);
-    delay(50);
+    speed=speed-10;
+    delay(speed);
+    Serial.print("1;");
+    Serial.print(speed+";");
+    Serial.println(i);
+  }  
+  for(int i = 9 ; i < 15 ; i++){
+    on(a,b,c,i);
+    speed=speed+10;
+    delay(speed);
+    Serial.print("1;");
+    Serial.print(speed+";");
+    Serial.println(i);
   }
-  for(int i = 0 ; i < LED_COUNT ; i++){
+  speed=100;
+  off();
+/*  for(int i = 0 ; i < LED_COUNT ; i++){
     on(0,0,0,i);
-    delay(50);
-  }
+    delay(speed);
+  }*/
 }
