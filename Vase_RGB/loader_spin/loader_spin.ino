@@ -7,6 +7,7 @@ long b;
 long c;
 int speed;
 bool debug = false;
+String message;
 
 //Allume toutes les leds de la couleur rgb_color(r,g,b) spécifiée
 void on(int r, int g, int b, int led=-1){
@@ -45,38 +46,44 @@ void off(){
 void setup(){
   Serial.begin(9600);
   randomSeed(analogRead(0));
-  Serial.print("To toggle debugging infos in the Serial Monitor, send any information to it.");
+  Serial.println("To toggle debugging infos in the Serial Monitor, send \"TOOLS\" to it.");
 }
 
 void loop(){
-  speed=90;
+  speed=88;
   a = random(256);
   b = random(256);
   c = random(256);
   if (Serial.available() > 0) {
-    debug = !debug;
-    Serial.println("Debugging infos turned on/off.");
-    Serial.readString();
-    delay(500);
+    message = Serial.readString();
+    message.trim();
+    if(message=="TOOLS"){
+      debug = !debug;
+      Serial.println("Debugging infos turned on/off.");
+      delay(500);
+    }
+    else{
+      Serial.println(message);
+    }
   }
   for(int i = 0 ; i < 8 ; i++){
     on(a,b,c,i);
-    speed=speed-10;
+    speed=speed-11;
     delay(speed);
   }  
   for(int i = 8 ; i < 16 ; i++){
     on(a,b,c,i);
-    speed=speed+10;
+    speed=speed+11;
     delay(speed);
   }
   for(int i = 0 ; i < 8 ; i++){
     on(0,0,0,i);
-    speed=speed-10;
+    speed=speed-11;
     delay(speed);
   }  
   for(int i = 8 ; i < 16 ; i++){
     on(0,0,0,i);
-    speed=speed+10;
+    speed=speed+11;
     delay(speed);
   }
 }
