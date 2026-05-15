@@ -42,8 +42,15 @@ void off(){
   }
   LEDS.write(colors, LED_COUNT);
 }
-void handle_serial_commands(command){
-
+void handle_serial_commands(String command){
+  switch (command) {
+    case "truc":
+      break;
+    default:
+      on(255,0,0);
+      delay(3000);
+      setup();
+  }
 }
 
 void setup(){
