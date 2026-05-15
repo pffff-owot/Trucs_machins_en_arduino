@@ -42,6 +42,9 @@ void off(){
   }
   LEDS.write(colors, LED_COUNT);
 }
+void handle_serial_commands(command){
+
+}
 
 void setup(){
   Serial.begin(9600);
@@ -63,7 +66,7 @@ void loop(){
       delay(500);
     }
     else{
-      Serial.println(message);
+      handle_serial_commands(message);
     }
   }
   for(int i = 0 ; i < 8 ; i++){
