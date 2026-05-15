@@ -59,7 +59,7 @@ void loop(){
     message.trim();
     if(message=="TOOLS"){
       debug = !debug;
-      Serial.println("Debugging infos turned on/off.");
+      Serial.print("Debugging infos (0/1) : ");Serial.println(debug);
       delay(500);
     }
     else{
