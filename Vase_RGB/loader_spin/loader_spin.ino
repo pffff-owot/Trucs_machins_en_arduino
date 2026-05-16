@@ -43,8 +43,17 @@ void off(){
   LEDS.write(colors, LED_COUNT);
 }
 void handle_serial_commands(String command){
-  switch (command) {
-    case "truc":
+  char first_char = command[0] ;
+  switch (first_char) {
+    case 't':
+      debug = !debug;
+      Serial.print("Debugging infos (0/1) : ");Serial.println(debug);
+      delay(500);
+      break;
+    case 'w':
+      on(255,255,255);
+      delay(10000);
+      off();
       break;
     default:
       on(255,0,0);
@@ -56,7 +65,7 @@ void handle_serial_commands(String command){
 void setup(){
   Serial.begin(9600);
   randomSeed(analogRead(0));
-  Serial.println("To toggle debugging infos in the Serial Monitor, send \"TOOLS\" to it.");
+  Serial.println("To toggle debugging infos in the Serial Monitor, send \"t\" to it.");
 }
 
 void loop(){
@@ -67,14 +76,7 @@ void loop(){
   if (Serial.available() > 0) {
     message = Serial.readString();
     message.trim();
-    if(message=="TOOLS"){
-      debug = !debug;
-      Serial.print("Debugging infos (0/1) : ");Serial.println(debug);
-      delay(500);
-    }
-    else{
-      handle_serial_commands(message);
-    }
+    handle_serial_commands(message);
   }
   for(int i = 0 ; i < 8 ; i++){
     on(a,b,c,i);
