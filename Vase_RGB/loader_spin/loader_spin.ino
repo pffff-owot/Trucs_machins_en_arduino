@@ -55,6 +55,13 @@ void handle_serial_commands(String command){
       delay(10000);
       off();
       break;
+    case 'b':
+      off();
+      delay(10000);
+      break;
+    case 'h':
+      Serial.println("h : dispaly this help message\nt : toggle debugging infos\nw : turn all lesd white for 10secs\nb :  turn all lesd black for 10secs");
+      break;
     default:
       on(255,0,0);
       delay(3000);
