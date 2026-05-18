@@ -62,6 +62,9 @@ void handle_serial_commands(String command){
     case 'h':
       Serial.println("h : dispaly this help message\nt : toggle debugging infos\nw : turn all leds white for 10secs\nb :  turn all leds black for 10secs");
       break;
+    case 'c':
+      delay(10000);
+      break;
     default:
       Serial.println("Unkown command\nsend \"help\" to get a list of all avaiable commands.");
       on(255,0,0);
