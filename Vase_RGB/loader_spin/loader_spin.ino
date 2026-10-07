@@ -1,6 +1,6 @@
 #include <PololuLedStrip.h> 
 PololuLedStrip<4> LEDS;
-#define LED_COUNT 16  
+#define LED_COUNT 16  //nb de leds de l'anneau
 rgb_color colors[LED_COUNT];
 long a;
 long b;
